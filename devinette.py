@@ -3,6 +3,11 @@
 # Demander une proposition au jouyeur : input()+conversion
 # Comparer la proposition au secret : if/elif/else
 # Afficher un indice ou felicitations : print()
+print("=== Jeu de devinette ===")
+print("Devine le nombre secret entre 1 et 100 !")
+print("Tu as 10 essais maximum. Bonne chance !")
+print()
+
 
 import random
 nombre_secret = random.randint(1, 100)
