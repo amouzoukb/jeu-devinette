@@ -4,17 +4,38 @@
 # Comparer la proposition au secret : if/elif/else
 # Afficher un indice ou felicitations : print()
 
-import random 
-nombre_secret = random.randint(1, 20)
+import random
+nombre_secret = random.randint(1, 100)
+# print(nombre_secret) # un nombre différent à chaque exécution
+
 trouve = False
+max_essais = 10
 essais = 0
-while not trouve :
-    proposition = int(input("Tape le nombre : "))
+def verifier_proposition(secret, proposition):
+    if proposition == secret :
+        return "trouve"
+    elif proposition < secret :
+        return "trop_petit"
+    else :
+        return "trop_grand"
+
+while not trouve and essais < max_essais :
+    proposition = int(input("Propose un nombre entre 1 et 100 : "))
     essais = essais + 1
-    if proposition == nombre_secret :
-        print("Bravo, tu as trouvé en " + str(essais) + " essais")
-        trouve =  True
-    elif proposition < nombre_secret :
+    resultat = verifier_proposition(nombre_secret, proposition)
+    if resultat == "trouve" :
+        print("Bravo ! Tu as trouvé le nombre secret en " + str(essais) + " essais !")
+    elif resultat == "trop_petit" :
         print("Trop petit !")
     else :
         print("Trop grand !")
+
+if not trouve :
+    print("Perdu ! Le nombre etait " + str(nombre_secret) + " !")
+
+
+
+
+
+
+
